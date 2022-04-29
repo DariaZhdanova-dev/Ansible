@@ -16,7 +16,7 @@ pipeline {
                     vaultCredentialsId: 'secret_password',
                     sudoUser: 'administrator',
                     inventory: 'inventory', 
-                    become: yes,
+                    become: true,
                     playbook: 'Playbook.yml')
             }
         }
