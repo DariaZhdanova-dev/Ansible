@@ -16,7 +16,7 @@
   docker_container:
     name: "{{ item.key }}"
     image: dariazhdanovadev/cicd-exam-images:22
-    ports:
+    published_ports:
       - "{{ item.value }}:5000"
     hostname: "{{ item.key }}"
     networks:
