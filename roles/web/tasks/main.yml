@@ -15,7 +15,7 @@
 - name: Run containers
   docker_container:
     name: "{{ item.key }}"
-    image: 
+    image: dariazhdanovadev/cicd-exam-images:22
     ports:
       - "{{ item.value }}:5000"
     hostname: "{{ item.key }}"
