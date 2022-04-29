@@ -15,7 +15,7 @@
       - source: "/nginx.conf"
         target: "/etc/nginx/nginx.conf"
         type: bind
-        read-only: true
+        read_only: true
     hostname: nginx
     published_ports:
         - "9000:80"
