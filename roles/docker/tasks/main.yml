@@ -31,6 +31,6 @@
   docker_network:
     name: "{{ network }}"
     ipam_config:
-      - subnet: 172.22.0.0/16
+      - subnet: 172.27.0.0/16
     state: present
     force: yes
