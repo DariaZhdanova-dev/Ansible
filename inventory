@@ -1,2 +1,2 @@
 [test]
-ansible-host localhost
+ansible-host 127.0.0.1
