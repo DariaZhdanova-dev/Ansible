@@ -1,0 +1,26 @@
+---
+# tasks file for roles/web
+
+- name: Docker Hub login
+  docker_login:
+    username: "{{ login }}"
+    password: "{{ password }}"
+
+- name: Pull image
+  docker_image:
+    name: /js_example:latest
+    source: pull
+    state: present
+
+- name: Run containers
+  docker_container:
+    name: "{{ item.key }}"
+    image: 
+    ports:
+      - "{{ item.value }}:5000"
+    hostname: "{{ item.key }}"
+    networks:
+      - name: "{{ network }}" 
+        links: "{{ servers.keys() | list }}"
+    state: started
+  loop: "{{ servers | dict2items }}"

@@ -3,9 +3,9 @@
  
   vars:
     servers:
-      - server_1: 2024
-      - server_2: 2023 
-      - server_3: 2022
+      server_1: 2024
+      server_2: 2023 
+      server_3: 2022
     
     network: ansible
         
