@@ -10,12 +10,11 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo '---------------------Deploy----------------------'
+                echo '-----------------------Deploy------------------------'
                 ansiblePlaybook(
                     credentialsId: 'ansible_admin', 
                     vaultCredentialsId: 'secret_pass',
                     sudoUser: 'administrator',
-                    sudo: true, 
                     inventory: 'inventory', 
                     playbook: 'Playbook.yml')
             }
