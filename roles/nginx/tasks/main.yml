@@ -1,9 +1,9 @@
 ---
 # tasks file for roles/nginx
 
-- name: Put nginx.conf
+- name: Put nginx.conf inside
   template:
-    src: "templates/nginx.conf"
+    src: "nginx.conf"
     dest: "/nginx.conf"
     mode: 0644
 
