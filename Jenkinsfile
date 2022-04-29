@@ -13,7 +13,7 @@ pipeline {
                 echo '-----------------------Deploy------------------------'
                 ansiblePlaybook(
                     credentialsId: 'ansible_admin', 
-                    vaultCredentialsId: 'secret_pass',
+                    vaultCredentialsId: 'secret_password',
                     sudoUser: 'administrator',
                     inventory: 'inventory', 
                     playbook: 'Playbook.yml')
