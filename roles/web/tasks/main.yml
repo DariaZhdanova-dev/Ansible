@@ -8,7 +8,7 @@
 
 - name: Pull image
   docker_image:
-    name: dariazhdanovadev/cicd-exam-images:latest
+    name: dariazhdanovadev/cicd-exam-images:22
     source: pull
     state: present
 
