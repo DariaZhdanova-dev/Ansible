@@ -1,13 +1,14 @@
 - name: Run web Application and Nginx balancer
-  hosts: test
+  hosts: docker_webserverss
  
   vars:
     servers:
       - server_1: 2024
       - server_2: 2023 
       - server_3: 2022
+    
     network: ansible
         
-  roles:
+    roles:
       - role: web
       - role: nginx
