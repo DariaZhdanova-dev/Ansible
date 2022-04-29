@@ -16,11 +16,10 @@
         target: "/etc/nginx/nginx.conf"
         type: bind
     hostname: nginx
-    ports:
+    published_ports:
         - "9000:80"
     networks:
       - name: "{{ network }}" 
         links: "{{ servers.keys() | list }}"
-    container_default_behavior: compatibility
     state: started
     recreate: yes
