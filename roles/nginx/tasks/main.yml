@@ -9,7 +9,7 @@
 
 - name: Run nginx container
   docker_container:
-    name: nginx
+    name: nginx1
     image: nginx:stable
     hostname: nginx
     volumes: 
