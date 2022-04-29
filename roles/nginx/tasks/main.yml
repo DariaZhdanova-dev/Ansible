@@ -4,22 +4,23 @@
 - name: Put nginx.conf inside
   template:
     src: "nginx.conf"
-    dest: "./nginx.conf"
+    dest: "/nginx.conf"
     mode: 0644
 
 - name: Run nginx container
   docker_container:
     name: nginx
-    image: nginx
+    image: nginx:stable
     mounts:
       - source: "/nginx.conf"
         target: "/etc/nginx/nginx.conf"
         type: bind
+        read-only: true
     hostname: nginx
     published_ports:
         - "9000:80"
     networks:
       - name: "{{ network }}" 
         links: "{{ servers.keys() | list }}"
-    state: started
-    recreate: yes
+    state: 'started'
+    restart_policy: 'always'
