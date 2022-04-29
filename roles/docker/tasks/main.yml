@@ -4,9 +4,10 @@
   apk:
     name:
         - python3
-        - pip
+        - py-pip
         - docker
     state: present
+    update_cache: true
 
 - name: Remove old versions
   pip:
