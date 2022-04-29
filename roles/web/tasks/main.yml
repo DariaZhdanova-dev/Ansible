@@ -23,4 +23,4 @@
       - name: "{{ network }}" 
         links: "{{ servers.keys() | list }}"
     state: started
-  loops: "{{ servers | dict2items }}"
+  loop: "{{ servers | dict2items }}"
