@@ -12,7 +12,7 @@
     name: nginx
     image: nginx:stable
     mounts:
-      - source: "nginx.conf"
+      - source: "./nginx.conf"
         target: "/etc/nginx/nginx.conf"
         type: bind
         read_only: true
