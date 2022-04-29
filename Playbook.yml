@@ -9,6 +9,6 @@
     
     network: ansible
         
-    roles:
-      - role: web
-      - role: nginx
+  roles:
+    - role: web
+    - role: nginx
