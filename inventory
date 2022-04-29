@@ -1,2 +1,5 @@
-[test]
-ansible-host 127.0.0.1
+all:
+    children:
+        docker_webservers: 
+            hosts:
+                localhost

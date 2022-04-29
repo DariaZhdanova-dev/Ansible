@@ -1,0 +1,26 @@
+---
+# tasks file for roles/nginx
+
+- name: Put nginx.conf
+  template:
+    src: "templates/nginx.conf"
+    dest: "/nginx.conf"
+    mode: 0644
+
+- name: Run nginx container
+  docker_container:
+    name: nginx
+    image: nginx
+    mounts:
+      - source: "/nginx.conf"
+        target: "/etc/nginx/nginx.conf"
+        type: bind
+    hostname: nginx
+    ports:
+        - "9000:80"
+    networks:
+      - name: "{{ network }}" 
+        links: "{{ servers.keys() | list }}"
+    container_default_behavior: compatibility
+    state: started
+    recreate: yes
