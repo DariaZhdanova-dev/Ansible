@@ -4,7 +4,7 @@
 - name: Put nginx.conf inside
   template:
     src: "nginx.conf"
-    dest: "/nginx.conf"
+    dest: "./nginx.conf"
     mode: 0644
 
 - name: Run nginx container
