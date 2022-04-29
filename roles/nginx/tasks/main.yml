@@ -13,10 +13,10 @@
     image: nginx:stable
     hostname: nginx
     mounts: 
-        source: "/nginx.conf"
-        target: "/etc/nginx/nginx.conf"
-        type: bind
-        read_only: true
+        - source: "/nginx.conf"
+          target: "/etc/nginx/nginx.conf"
+          type: bind
+          read_only: true
     published_ports:
         - "9000:80"
     networks:
