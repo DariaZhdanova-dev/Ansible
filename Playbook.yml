@@ -1,5 +1,5 @@
 - name: Run web Application and Nginx balancer
-  hosts: docker_webserverss
+  hosts: docker_webservers
  
   vars:
     servers:
