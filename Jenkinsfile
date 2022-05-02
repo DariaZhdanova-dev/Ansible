@@ -22,7 +22,7 @@ pipeline {
         stage('Run test nginx') {
             steps {
                 script{
-                    final hostIp="192.168.1.227:5000"
+                    final hostIp="10.0.3.15:5000"
                     final def (String code) =
                             sh(script: "curl -s -o /dev/null -w '%{response_code}' $hostIp")
                     echo "HTTP response status code: $code"
