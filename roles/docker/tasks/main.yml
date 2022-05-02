@@ -46,6 +46,8 @@
     state: started
 
 - name: Create docker network
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
   docker_network:
     name: "{{ network }}"
     ipam_config:
