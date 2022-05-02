@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('Get git code') {
             steps {
-                echo '----------------------Get-git-code------------------'
                 checkout scm
             }
         }
