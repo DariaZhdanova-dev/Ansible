@@ -24,7 +24,7 @@ pipeline {
                 script{
                     final hostIp=192.168.1.227:5000
                     final def (String response, int code) =
-                            sh(script: "curl -s -w '\\n%{response_code}' -u $API_TOKEN $url", returnStdout: true)
+                            sh(script: "curl -s -w '\\n%{response_code}' $hostIp", returnStdout: true)
                                 .trim()
                                 .tokenize("\n")
 
