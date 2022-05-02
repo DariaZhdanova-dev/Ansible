@@ -1,15 +1,26 @@
 ---
 # tasks file for roles/docker
+- name: Define Python Interpreter
+  set_fact:
+    new_interpreter: "{{ ansible_python_interpreter }}"
+
+- name: Override Python Interpeter for CentOS7
+  set_fact:
+    new_interpreter: "/usr/bin/python"
+  when:
+    - "ansible_distribution == 'CentOS'"
+    - "ansible_distribution_major_version | int == 7"
+
 - name: Install base
-  vars:
-    ansible_python_interpreter: /usr/bin/python2
-  yum:
-    name:
+  package:
+    name: 
         - epel-release
         - python3
         - python3-pip
-    update_cache: yes
     state: present
+  vars:
+    ansible_python_interpreter: "{{ my_interpreter }}"
+
 
 - name: Remove old versions
   pip:
@@ -17,13 +28,11 @@
        - docker-py
        - docker
     state: absent
-    executable: pip3
 
 - name: Install Docker SDK for Python
   pip: 
     name: docker==4.4.4
     state: present
-    executable: pip3
 
 - name: Add docker repository
   yum_repository:
