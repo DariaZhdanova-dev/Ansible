@@ -27,8 +27,8 @@ pipeline {
                             sh(script: "curl -s -o /dev/null -w '%{response_code}' $hostIp")
                     echo "HTTP response status code: $code"
 
-                    if (code == "200") {
-                        echo 'THATS FINE'
+                    if (code != "200") {
+                        currentBuild.result = 'FAILURE'
                     }
                 }   
             }            
