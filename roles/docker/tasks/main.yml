@@ -63,5 +63,5 @@
     name: "{{ network }}"
     ipam_config:
       - subnet: 172.18.0.0/16
-    state: present
+    state: absent
     force: yes
