@@ -21,18 +21,20 @@ pipeline {
         
         stage('Run test nginx') {
             steps {
-                echo '--------------------nginx test--------------------'
-                sh '''
-                    nginx_IP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nginx)
-                    answer_code=$(curl -I $nginx_IP:80 2>/dev/null | head -n1 | awk '{print $2}')
-                    if (( answer_code == 200 )); 
-                        then 
-                            echo "SUCCESS";
-                        else
-                            echo "FAILURE!";
-                    fi
-                '''
-            }               
+                script{
+                    final hostIp=192.168.1.227:5000
+                    final def (String response, int code) =
+                            sh(script: "curl -s -w '\\n%{response_code}' -u $API_TOKEN $url", returnStdout: true)
+                                .trim()
+                                .tokenize("\n")
+
+                        echo "HTTP response status code: $code"
+
+                        if (code == 200) {
+                            echo response
+                        }
+                }   
+            }            
         }
     }       
 }
