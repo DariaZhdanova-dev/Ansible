@@ -21,6 +21,7 @@
   pip: 
     name: docker==4.4.4
     state: present
+    executable: pip3
 
 - name: Add docker repository
   yum_repository:
