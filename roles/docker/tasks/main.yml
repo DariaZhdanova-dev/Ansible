@@ -6,10 +6,11 @@
         - epel-release
         - python3
         - python3-pip
+    update_cache: yes
     state: present
 
 - name: Remove old versions
-  pip:
+  pip3:
     name:
        - docker-py
        - docker
@@ -19,7 +20,7 @@
   pip: 
     name: docker==4.4.4
     state: present
-    
+
 - name: Add docker repository
   yum_repository:
     name: docker-ce-repo
