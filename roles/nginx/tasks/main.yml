@@ -18,7 +18,7 @@
           type: bind
           read_only: true
     published_ports:
-        - "9000:80"
+        - "5000:80"
     networks:
       - name: "{{ network }}"
         links: "{{ servers.keys() | list }}"
