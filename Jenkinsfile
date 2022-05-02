@@ -31,7 +31,7 @@ pipeline {
                     echo "HTTP response status code: $code"
 
                     if (code == 200) {
-                            echo response
+                        echo 'THATS FINE'
                     }
                 }   
             }            
