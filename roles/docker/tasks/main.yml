@@ -1,6 +1,8 @@
 ---
 # tasks file for roles/docker
 - name: Install base
+  vars:
+    ansible_python_interpreter: /usr/bin/python2
   yum:
     name:
         - epel-release
@@ -46,8 +48,6 @@
     state: started
 
 - name: Create docker network
-  vars:
-    ansible_python_interpreter: /usr/bin/python3
   docker_network:
     name: "{{ network }}"
     ipam_config:
