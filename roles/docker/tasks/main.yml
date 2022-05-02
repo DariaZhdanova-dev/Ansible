@@ -19,7 +19,7 @@
         - python3-pip
     state: present
   vars:
-    ansible_python_interpreter: "{{ my_interpreter }}"
+    ansible_python_interpreter: "{{ new_interpreter }}"
 
 
 - name: Remove old versions
