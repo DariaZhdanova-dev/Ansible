@@ -28,11 +28,11 @@ pipeline {
                                 .trim()
                                 .tokenize("\n")
 
-                        echo "HTTP response status code: $code"
+                    echo "HTTP response status code: $code"
 
-                        if (code == 200) {
+                    if (code == 200) {
                             echo response
-                        }
+                    }
                 }   
             }            
         }
