@@ -1,13 +1,12 @@
 ---
 # tasks file for roles/docker
 - name: Install base
-  apk:
+  yum:
     name:
+        - epel-release
         - python3
-        - py-pip
-        - docker
+        - python3-pip
     state: present
-    update_cache: true
 
 - name: Remove old versions
   pip:
@@ -19,6 +18,22 @@
 - name: Install Docker SDK for Python
   pip: 
     name: docker==4.4.4
+    state: present
+    
+- name: Add docker repository
+  yum_repository:
+    name: docker-ce-repo
+    description: "Docker CE repository"
+    baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
+    enabled: yes
+    gpgcheck: no
+
+- name: Install docker
+  yum:
+    name: 
+      - "containerd.io-1.3.7-3.1.el7.x86_64"
+      - "docker-ce-cli-19.03.10-3.el7.x86_64"
+      - "docker-ce-19.03.10-3.el7.x86_64"
     state: present
   
 - name: Start and enable docker
