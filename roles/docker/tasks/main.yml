@@ -17,6 +17,7 @@
         - epel-release
         - python3
         - python3-pip
+        - libselinux-python3
     state: present
   vars:
     ansible_python_interpreter: "{{ new_interpreter }}"
