@@ -20,7 +20,7 @@
     published_ports:
         - "9000:80"
     networks:
-      - name: web
+      - name: "{{ network }}"
         links: "{{ servers.keys() | list }}"
     state: started
     restart_policy: always
