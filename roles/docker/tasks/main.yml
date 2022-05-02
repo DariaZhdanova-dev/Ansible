@@ -10,7 +10,7 @@
     state: present
 
 - name: Remove old versions
-  pip3:
+  pip:
     name:
        - docker-py
        - docker
