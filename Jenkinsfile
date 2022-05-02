@@ -23,11 +23,8 @@ pipeline {
             steps {
                 script{
                     final hostIp="192.168.1.227:5000"
-                    final def (String response, int code) =
-                            sh(script: "curl -s -w '\\n%{response_code}' $hostIp", returnStdout: true)
-                                .trim()
-                                .tokenize("\n")
-
+                    final def (String code) =
+                            sh(script: "curl -s -o /dev/null -w '%{response_code}' $hostIp")
                     echo "HTTP response status code: $code"
 
                     if (code == 200) {
