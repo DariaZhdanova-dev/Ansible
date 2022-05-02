@@ -15,6 +15,7 @@
        - docker-py
        - docker
     state: absent
+    executable: pip3
 
 - name: Install Docker SDK for Python
   pip: 
