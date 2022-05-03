@@ -23,7 +23,7 @@ pipeline {
             steps {
                 script{
                     final hostIp="192.168.0.103"
-                    def code = sh([script: '''curl -s -I $hostIp:5000''', returnStdout: true ]).trim()
+                    def code = sh([script: "curl -s -I $hostIp:5000", returnStdout: true ]).trim()
                     echo "$code"
                 }   
             }            
