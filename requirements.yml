@@ -1,6 +1,3 @@
-- src: dariazhdanova_dev.ansible_docker
-  name: docker
-
 - src: dariazhdanova_dev.ansible_nginx
   name: nginx
 
