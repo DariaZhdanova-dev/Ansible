@@ -24,7 +24,7 @@ pipeline {
                 script{
                     final hostIp="192.168.0.103:5000"
                     final def (String code) =
-                            sh(script: "curl -s -o /dev/null -w '%{response_code}' $hostIp")
+                            sh(script: "xargs -I % -P 5 curl -s -o /dev/null -w '%{response_code}' $hostIp")
                     echo "HTTP response status code: $code"
 
                     // if ($code s!= "200") {
