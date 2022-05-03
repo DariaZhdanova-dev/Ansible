@@ -29,9 +29,8 @@ pipeline {
                         error("Can't even proceed 3 requests!")
                     }
                     def hostsOnline = sh([script: "seq 1 3 | xargs -I % -P 3 curl -s $hostIp:5000 | grep hostname/ | awk {'print \$2'}", returnStdout: true ]).trim()
-                    def valid = hostsOnline.findAll { a -> validHosts.any { a.contains(it) }}
-
                 }   
+                def valid = hostsOnline.findAll { a -> validHosts.any { a.contains(it) }}
             }            
         }
     }       
