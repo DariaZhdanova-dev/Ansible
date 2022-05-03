@@ -23,7 +23,9 @@ pipeline {
             steps {
                 script{
                     final hostIp="192.168.0.103"
-                    sh "seq 1 3 | xargs -I % -P 3 curl -s -I $hostIp:5000 | grep HTTP/ | awk {'print $2'}"
+                    def code = sh '''
+                    seq 1 3 | xargs -I % -P 3 curl -s -I $hostIp:5000 | grep HTTP/ | awk {'print $2'}
+                    '''
                 }   
             }            
         }
