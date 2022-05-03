@@ -7,17 +7,17 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
-            steps {
-                echo '-----------------------Deploy------------------------'
-                ansiblePlaybook(
-                    credentialsId: 'ansible_admin', 
-                    vaultCredentialsId: 'secret_password',
-                    inventory: 'inventory', 
-                    become: true,
-                    playbook: 'Playbook.yml')
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         echo '-----------------------Deploy------------------------'
+        //         ansiblePlaybook(
+        //             credentialsId: 'ansible_admin', 
+        //             vaultCredentialsId: 'secret_password',
+        //             inventory: 'inventory', 
+        //             become: true,
+        //             playbook: 'Playbook.yml')
+        //     }
+        // }
         
         stage('Test nginx') {
             steps {
