@@ -28,8 +28,9 @@ pipeline {
                     if (code != "3"){
                         error("Can't even proceed 3 requests!")
                     }
+                    echo 'CHECK'
                     def hostsOnline = sh([script: "seq 1 3 | xargs -I % -P 3 curl -s $hostIp:5000 | grep hostname/ | awk {'print \$2'}", returnStdout: true ]).trim()
-                    if (hostsOnline.contains('server_1'))
+                    if (hostsOnline.contains("server_1"))
                     {
                         echo 'OK'
                     }
