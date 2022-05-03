@@ -23,10 +23,14 @@ pipeline {
             steps {
                 script{
                     final hostIp="192.168.0.103"
+                    def validHosts = ['server_1', 'server_2', 'server_3']
                     def code = sh([script: "seq 1 3 | xargs -I % -P 3 curl -s -I $hostIp:5000 | grep HTTP/ | awk {'print \$2'} | grep 200 | wc -l", returnStdout: true ]).trim()
                     if (code != "3"){
-                        error("Not all servers are online!")
+                        error("Can't even proceed 3 requests!")
                     }
+                    def hostsOnline = sh([script: "seq 1 3 | xargs -I % -P 3 curl -s $hostIp:5000 | grep hostname/ | awk {'print \$2'}", returnStdout: true ]).trim()
+                    def valid = hostsOnline.findAll { a -> validHosts.any { a.contains(it) }}
+
                 }   
             }            
         }
