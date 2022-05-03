@@ -26,6 +26,7 @@ pipeline {
                     def code = sh '''
                     seq 1 3 | xargs -I % -P 3 curl -s -I $hostIp:5000 | grep HTTP/ | awk {'print $2'}
                     '''
+                    echo "$code"
                 }   
             }            
         }
