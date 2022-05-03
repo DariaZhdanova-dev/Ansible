@@ -23,4 +23,5 @@
       - name: "{{ network }}"
         links: "{{ servers.keys() | list }}"
     state: started
+  restart_policy: always
   loop: "{{ servers | dict2items }}"
