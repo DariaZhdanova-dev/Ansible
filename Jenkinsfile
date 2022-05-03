@@ -23,9 +23,7 @@ pipeline {
             steps {
                 script{
                     final hostIp="192.168.0.103"
-                    final def (String code) =
-                            sh(script: "seq 1 3 | xargs -I % -P 3 curl -s -I $hostIp:5000 | grep HTTP/ | awk {'print ${2}'}")
-                    echo "HTTP response status code: $code"
+                    sh "seq 1 3 | xargs -I % -P 3 curl -s -I $hostIp:5000 | grep HTTP/ | awk {'print $2'}"
                 }   
             }            
         }
