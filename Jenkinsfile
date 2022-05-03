@@ -9,7 +9,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo '-----------------------Deploy------------------------'
+                echo '-----------------------Install roles------------------------'
+                sh '''
+                    ansible-galaxy install -r requirements.yml
+                '''
                 ansiblePlaybook(
                     credentialsId: 'ansible_admin', 
                     vaultCredentialsId: 'secret_password',

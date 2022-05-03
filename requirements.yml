@@ -1,0 +1,8 @@
+- src: dariazhdanova_dev.ansible_docker
+  name: docker
+
+- src: dariazhdanova_dev.ansible_nginx
+  name: nginx
+
+- src: dariazhdanova_dev.ansible_web
+  name: web
