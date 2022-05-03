@@ -22,14 +22,11 @@ pipeline {
         stage('Run test nginx') {
             steps {
                 script{
-                    final hostIp="192.168.0.103:5000"
+                    final hostIp="192.168.0.103"
                     final def (String code) =
-                            sh(script: "xargs -I % -P 5 curl -s -o /dev/null -w '%{response_code}' $hostIp")
+                            sh(script: "seq 1 3 | xargs -I % -P 3 curl -s -I $hostIp:5000 | grep HTTP/ | awk {'
+print $2'}'")
                     echo "HTTP response status code: $code"
-
-                    // if ($code s!= "200") {
-                    //     currentBuild.result = 'FAILURE'
-                    // }
                 }   
             }            
         }
