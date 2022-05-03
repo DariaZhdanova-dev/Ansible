@@ -24,7 +24,7 @@ pipeline {
                 script{
                     final hostIp="192.168.0.103"
                     def code = sh([script: "seq 1 3 | xargs -I % -P 3 curl -s -I $hostIp:5000 | grep HTTP/ | awk {'print \$2'}", returnStdout: true ]).trim()
-                    echo "${code//$'\n'/ }"
+                    def new_code = sh([script: "echo $code | sed 's/ /\n/g'", returnStdout: true ]).trim()
                 }   
             }            
         }
