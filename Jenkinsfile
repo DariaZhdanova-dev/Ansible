@@ -13,12 +13,14 @@ pipeline {
                 sh '''
                     ansible-galaxy install -r requirements.yml
                 '''
+                echo '-----------------------Deploy------------------------'
                 ansiblePlaybook(
                     credentialsId: 'ansible_admin', 
                     vaultCredentialsId: 'secret_password',
                     inventory: 'inventory', 
                     become: true,
-                    playbook: 'Playbook.yml')
+                    playbook: 'Playbook.yml', 
+                    )
             }
         }
         

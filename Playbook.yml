@@ -6,7 +6,8 @@
       server_1: 2024
       server_2: 2023 
       server_3: 2022
-    
+    image_name: dariazhdanovadev/cicd-exam-images
+    image_tag: 22
     network: web
         
   roles:
