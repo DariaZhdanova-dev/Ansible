@@ -24,4 +24,5 @@
         links: "{{ servers.keys() | list }}"
     state: started
   restart_policy: always
+  cleanup: true
   loop: "{{ servers | dict2items }}"
