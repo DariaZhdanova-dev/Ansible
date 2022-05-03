@@ -30,8 +30,8 @@ pipeline {
                     }
                     echo 'CHECK'
                     def hostsOnline = sh([script: "seq 1 3 | xargs -I % -P 3 curl -s $hostIp:5000 | grep hostname | awk {'print \$2'}", returnStdout: true ]).trim()
-                    if ( validHosts.any { hostsOnline.contains(it)} ){
-                        echo 'OK!'
+                    if ( ! validHosts.any { hostsOnline.contains(it)} ){
+                        error("Not all hosts are online!")
                     }
                 }   
             }            
