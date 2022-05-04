@@ -20,6 +20,7 @@ pipeline {
                     inventory: 'inventory', 
                     become: true,
                     playbook: 'Playbook.yml', 
+                    extras: "-vvv"
                     )
             }
         }
