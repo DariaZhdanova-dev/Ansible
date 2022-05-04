@@ -11,5 +11,5 @@
     network: web
         
   roles:
-    - { role: web, image_tag: "42"}
+    - { role: web, image_tag: 42}
     - role: nginx
