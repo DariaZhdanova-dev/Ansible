@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script{
                     final hostIp="192.168.0.103"
-                    def code = sh([script: "curl -s -o /dev/null -w "%{http_code}"  $hostIp:5000", returnStdout: true ]).trim()
+                    def code = sh([script: "curl -s -o /dev/null -w "%{http_code}" $hostIp:5000", returnStdout: true ]).trim()
                     if (code != "200"){
                         error("Can't even proceed 1 request!")
                     }
