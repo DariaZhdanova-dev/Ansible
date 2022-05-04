@@ -36,6 +36,7 @@ pipeline {
                     if ( !(hostsOnline.contains("server_3") && hostsOnline.contains("server_1") && hostsOnline.contains("server_2"))){
                          error("Not all servers are online!")
                     }
+                    echo '------------------------TESTS PASSED--------------------------'
                 }   
             }            
         }
