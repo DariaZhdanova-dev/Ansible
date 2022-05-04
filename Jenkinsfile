@@ -28,9 +28,9 @@ pipeline {
             steps {
                 script{
                     final hostIp="192.168.0.103"
-                    def code = sh([script: "seq 1 3 | xargs -I % -P 3 curl -s -I $hostIp:5000 | grep HTTP/ | awk {'print \$2'} | grep 200 | wc -l", returnStdout: true ]).trim()
-                    if (code != "3"){
-                        error("Can't even proceed 3 requests!")
+                    def code = sh([script: "curl -s -o /dev/null -w "%{http_code}"  $hostIp:5000", returnStdout: true ]).trim()
+                    if (code != "200"){
+                        error("Can't even proceed 1 request!")
                     }
                     def hostsOnline = sh([script: "seq 1 3 | xargs -I % -P 3 curl -s $hostIp:5000 | grep hostname | awk {'print \$2'}", returnStdout: true ]).trim()
                     if ( !(hostsOnline.contains("server_3") && hostsOnline.contains("server_1") && hostsOnline.contains("server_2"))){
