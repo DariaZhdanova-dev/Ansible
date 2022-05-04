@@ -11,7 +11,7 @@ pipeline {
             steps {
                 echo '-----------------------Install roles------------------------'
                 sh '''
-                    ansible-galaxy install -r requirements.yml
+                    ansible-galaxy install -r requirements.yml --force
                 '''
                 echo '-----------------------Deploy------------------------'
                 ansiblePlaybook(
